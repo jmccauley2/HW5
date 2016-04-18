@@ -15,7 +15,7 @@ void Merge(string file);
 
 int main()
 {
-	string files [5] = { "Bubble","Insertion","Quick","Shell","Merge" };
+	string files [4] = { "FewUnique","NearlySorted","Random","Reversed" };
 	for each (string file in files)
 	{
 		Bubble(file);
