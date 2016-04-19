@@ -4,50 +4,80 @@
 #include "stdafx.h"
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
-void Bubble(string file);
-void Insertion(string file);
-void Quick(string file);
-void Shell(string file);
-void Merge(string file);
+void Bubble(vector <int> numbers);
+void Insertion(vector <int> numbers);
+void Quick(vector <int> numbers);
+void Shell(vector <int> numbers);
+void Merge(vector <int> numbers);
 
 int main()
 {
 	string files [4] = { "FewUnique","NearlySorted","Random","Reversed" };
-	for each (string file in files)
+	for each (string file in files)//returns comparisons and exchanges for each file in each sort
 	{
-		Bubble(file);
-		Insertion(file);
-		Quick(file);
-		Shell(file);
-		Merge(file);
+		vector <int> numbers;//vector to sort
+		file = file + ".txt";
+		ifstream in;
+		in.open(file);
+		if (!in.is_open())
+		{
+			cout << "I could not find " << file << endl;
+			cout << "Check the location.\n";
+			return 0;
+		}
+		int NewNum;
+		while (in>>NewNum)//adds numbers to vector
+		{
+			numbers.push_back(NewNum);
+		}
+
+
+		Bubble(numbers);
+		Insertion(numbers);
+		Quick(numbers);
+		Shell(numbers);
+		Merge(numbers);
 	}
+	system("pause");
     return 0;
 }
 
-void Bubble(string file)
+void Bubble(vector <int> numbers)
 {
-
+	int comparison = 0, exchange = 0, temp;	
+	cout << "Bubble comparisons=" << comparison << endl;
+	cout << "Bubble exchanges="<< exchange << endl;
 }
 
-void Insertion(string file)
+void Insertion(vector <int> numbers)
 {
-
+	int comparison = 0, exchange = 0;
+	cout << "Insertion comparisons=" << comparison << endl;
+	cout << "Insertion exchanges=" << exchange << endl;
 }
 
-void Quick(string file)
+void Quick(vector <int> numbers)
 {
-
+	int comparison = 0, exchange = 0;
+	cout << "Quick comparisons=" << comparison << endl;
+	cout << "Quick exchanges=" << exchange << endl;;
 }
 
-void Shell(string file)
+void Shell(vector <int> numbers)
 {
-
+	int comparison = 0, exchange = 0;
+	cout << "Shell comparisons=" << comparison << endl;
+	cout << "Shell exchanges=" << exchange << endl;
 }
 
-void Merge(string file)
+void Merge(vector <int> numbers)
 {
-
+	int comparison = 0, exchange = 0;
+	cout << "Merge comparisons=" << comparison << endl;
+	cout << "Merge exchanges=" << exchange << endl;
 }
