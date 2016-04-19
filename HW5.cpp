@@ -36,7 +36,6 @@ int main()
 			numbers.push_back(NewNum);
 		}
 
-
 		Bubble(numbers);
 		Insertion(numbers);
 		Quick(numbers);
@@ -50,13 +49,38 @@ int main()
 void Bubble(vector <int> numbers)
 {
 	int comparison = 0, exchange = 0, temp;	
+	for (int i = 1; i < numbers.size(); i++)
+	{
+		for (int j = 0; j < numbers.size() - 1; j++)
+		{
+			comparison++;
+			if (numbers[j] > numbers[j + 1])
+			{
+				exchange++;
+				temp = numbers[j];
+				numbers[j] = numbers[j + 1];
+				numbers[j + 1] = numbers[j];
+			}
+		}
+	}
 	cout << "Bubble comparisons=" << comparison << endl;
 	cout << "Bubble exchanges="<< exchange << endl;
 }
 
 void Insertion(vector <int> numbers)
 {
-	int comparison = 0, exchange = 0;
+	int comparison = 0, exchange = 0,element,j;
+	for (int i = 1; i < numbers.size(); i++)
+	{
+		element = numbers[i];
+		j = i;
+		while (j > 0 && numbers[j - 1] > element)
+		{
+			numbers[j] = numbers[j - i];
+			j = j - 1;
+		}
+		numbers[j] = element;
+	}
 	cout << "Insertion comparisons=" << comparison << endl;
 	cout << "Insertion exchanges=" << exchange << endl;
 }
