@@ -9,18 +9,18 @@
 
 using namespace std;
 
-void Bubble(vector <int> numbers);
-void Insertion(vector <int> numbers);
-void Quick(vector <int> numbers);
-void Shell(vector <int> numbers);
-void Merge(vector <int> numbers);
+void Bubble(int  numbers []);
+void Insertion(int numbers []);
+void Quick(int numbers []);
+void Shell(int numbers []);
+void Merge(int numbers []);
 
 int main()
 {
-	string files [4] = { "FewUnique","NearlySorted","Random","Reversed" };
+	string files[4] = { "FewUnique","NearlySorted","Random","Reversed" };
 	for each (string file in files)//returns comparisons and exchanges for each file in each sort
 	{
-		vector <int> numbers;//vector to sort
+		int numbers [10000];//vector to sort
 		file = file + ".txt";
 		ifstream in;
 		in.open(file);
@@ -31,27 +31,29 @@ int main()
 			return 0;
 		}
 		int NewNum;
-		while (in>>NewNum)//adds numbers to vector
+		for (int i = 0; i < 10000; i++)
 		{
-			numbers.push_back(NewNum);
+			in >> numbers[i];
 		}
-
+		in.clear();
+		in.close();
 		Bubble(numbers);
+
 		Insertion(numbers);
 		Quick(numbers);
 		Shell(numbers);
 		Merge(numbers);
 	}
 	system("pause");
-    return 0;
+	return 0;
 }
 
-void Bubble(vector <int> numbers)
+void Bubble(int numbers [])
 {
-	int comparison = 0, exchange = 0, temp;	
-	for (int i = 1; i < numbers.size(); i++)
+	int comparison = 0, exchange = 0, temp;
+	for (int i = 1; i < 10000; i++)
 	{
-		for (int j = 0; j < numbers.size() - 1; j++)
+		for (int j = 0; j < 10000 - 1; j++)
 		{
 			comparison++;
 			if (numbers[j] > numbers[j + 1])
@@ -64,13 +66,13 @@ void Bubble(vector <int> numbers)
 		}
 	}
 	cout << "Bubble comparisons=" << comparison << endl;
-	cout << "Bubble exchanges="<< exchange << endl;
+	cout << "Bubble exchanges=" << exchange << endl;
 }
 
-void Insertion(vector <int> numbers)
+void Insertion(int numbers [])
 {
-	int comparison = 0, exchange = 0,element,j;
-	for (int i = 1; i < numbers.size(); i++)
+	int comparison = 0, exchange = 0, element, j;
+	for (int i = 1; i < 10000; i++)
 	{
 		element = numbers[i];
 		j = i;
@@ -85,21 +87,21 @@ void Insertion(vector <int> numbers)
 	cout << "Insertion exchanges=" << exchange << endl;
 }
 
-void Quick(vector <int> numbers)
+void Quick(int numbers [])
 {
 	int comparison = 0, exchange = 0;
 	cout << "Quick comparisons=" << comparison << endl;
 	cout << "Quick exchanges=" << exchange << endl;;
 }
 
-void Shell(vector <int> numbers)
+void Shell(int numbers [])
 {
 	int comparison = 0, exchange = 0;
 	cout << "Shell comparisons=" << comparison << endl;
 	cout << "Shell exchanges=" << exchange << endl;
 }
 
-void Merge(vector <int> numbers)
+void Merge(int numbers [])
 {
 	int comparison = 0, exchange = 0;
 	cout << "Merge comparisons=" << comparison << endl;
